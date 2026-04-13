@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>asg1 - Paint Program</title>
+  </head>
+
+  <body onload="main()">
+    <h1>asg1 - Paint Program</h1>
+
+    <canvas id="webgl" width="400" height="400">
+      Please use a browser that supports canvas
+    </canvas>
+
+    <br />
+
+    <button id="clearButton">Clear Canvas</button>
+    <button id="drawPictureButton">Draw My Picture</button>
+
+    <h2>Drawing Mode:</h2>
+    <button id="squareButton">Squares</button>
+    <button id="triangleButton">Triangles</button>
+    <button id="circleButton">Circles</button>
+
+    <h2>Color</h2>
+    <p>
+      Red
+      <input type="range" id="redSlide" min="0" max="100" value="100" />
+      Green
+      <input type="range" id="greenSlide" min="0" max="100" value="100" />
+      Blue
+      <input type="range" id="blueSlide" min="0" max="100" value="100" />
+    </p>
+
+    <p>
+      Size
+      <input type="range" id="sizeSlide" min="5" max="40" value="10" />
+    </p>
+
+    <p>
+      Circle Segments
+      <input type="range" id="segmentSlide" min="3" max="30" value="10" />
+    </p>
+
+    <p id="stats"></p>
+
+    <p>
+      <b>Awesome feature:</b> I improved the paint program by filling gaps while
+      dragging so brush strokes look more continuous.
+    </p>
+
+    <h2>Reference Sketch</h2>
+    <p>This is the paper sketch I used for my triangle drawing.</p>
+    <img src="IMG_7669.png" alt="Cat sketch reference" width="300" />
+
+    <p>
+  Desmond Driver<br />
+  dtdriver@ucsc.edu
+</p>
+
+<p>
+  <b>Notes to Grader:</b><br />
+  Includes reference sketch image on webpage.<br />
+  Includes improved drag drawing that fills gaps while painting.
+</p>
+
+<script src="lib/webgl-utils.js"></script>
+<script src="lib/webgl-debug.js"></script>
+<script src="lib/cuon-utils.js"></script>
+<script src="asg1.js"></script>
+  </body>
+</html>
+
