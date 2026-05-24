@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 4 - Three Sphere Lighting</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0d1117;
+      color: #111;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    #webgl {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      background: #5d8cff;
+      cursor: crosshair;
+    }
+    #hud {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      width: 285px;
+      max-height: calc(100vh - 20px);
+      overflow-y: auto;
+      padding: 9px;
+      background: rgba(255,255,255,0.78);
+      border: 2px solid #111;
+      color: #111;
+      line-height: 1.25;
+      font-size: 12px;
+      box-sizing: border-box;
+    }
+    #hud h1 {
+      margin: 0 0 5px 0;
+      font-size: 15px;
+    }
+    #hud h2 {
+      margin: 7px 0 4px 0;
+      font-size: 13px;
+    }
+    #hud p {
+      margin: 3px 0;
+    }
+    .button-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      margin: 6px 0;
+    }
+    button {
+      border: 2px solid #111;
+      background: #fff;
+      color: #111;
+      padding: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 0;
+      font-size: 12px;
+    }
+    label {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      align-items: center;
+      gap: 5px;
+      margin: 4px 0;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+    #lightReadout {
+      font-size: 11px;
+      margin-top: 5px;
+      padding: 5px;
+      border: 1px solid #111;
+      background: rgba(255,255,255,0.55);
+    }
+    #crosshair {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      margin-left: -9px;
+      margin-top: -9px;
+      pointer-events: none;
+    }
+    #crosshair:before, #crosshair:after {
+      content: "";
+      position: absolute;
+      background: rgba(0,0,0,0.75);
+    }
+    #crosshair:before { left: 8px; top: 0; width: 2px; height: 18px; }
+    #crosshair:after { left: 0; top: 8px; width: 18px; height: 2px; }
+  </style>
+</head>
+<body onload="main()">
+  <canvas id="webgl" width="960" height="640">
+    Please use a browser that supports canvas.
+  </canvas>
+
+  <div id="hud">
+    <h1>Lighting Demo</h1>
+    <p><strong>Controls:</strong> W/A/S/D move, Q/E turn, mouse look.</p>
+    <p>Three colored spheres are placed in front so the lighting changes are easy to see.</p>
+
+    <h2>Lighting Controls</h2>
+    <div class="button-row">
+      <button id="toggleLighting">Lighting: ON</button>
+      <button id="toggleNormals">Normals: OFF</button>
+      <button id="togglePointLight">Point Light: ON</button>
+      <button id="toggleSpotLight">Spotlight: ON</button>
+    </div>
+
+    <label>Light X <input id="lightX" type="range" min="2" max="30" step="0.1" value="14"></label>
+    <label>Light Y <input id="lightY" type="range" min="1" max="18" step="0.1" value="5"></label>
+    <label>Light Z <input id="lightZ" type="range" min="2" max="30" step="0.1" value="24"></label>
+    <label>Orbit <input id="lightRadius" type="range" min="0" max="12" step="0.1" value="5"></label>
+    <label>Red <input id="lightR" type="range" min="0" max="1" step="0.01" value="1"></label>
+    <label>Green <input id="lightG" type="range" min="0" max="1" step="0.01" value="0.86"></label>
+    <label>Blue <input id="lightB" type="range" min="0" max="1" step="0.01" value="0.72"></label>
+    <div id="lightReadout">Point light loading...</div>
+
+    <p id="status">Loading world...</p>
+  </div>
+  <div id="crosshair"></div>
+
+  <script src="Matrix4.js"></script>
+  <script src="Camera.js"></script>
+  <script src="Cube.js"></script>
+  <script src="Sphere.js"></script>
+  <script src="OBJModel.js"></script>
+  <script src="World.js"></script>
+</body>
+</html>
