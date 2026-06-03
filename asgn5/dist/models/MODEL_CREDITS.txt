@@ -1,0 +1,10 @@
+Model files included from user uploads:
+
+- headphones.glb from Headphones.glb
+- microphone.glb from Microphone.glb
+- boombox.glb from Booombox.glb
+- record_player.glb from Record player.glb
+- speaker.glb from Speaker.glb
+- mp3_player.glb from MP3 player.glb
+
+Add original source/creator credits here if the model site requires attribution.
