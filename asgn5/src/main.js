@@ -56,28 +56,28 @@ gameStopButton.addEventListener('click', () => {
 // Skybox
 const cubeTextureLoader = new THREE.CubeTextureLoader();
 scene.background = cubeTextureLoader.load([
-  '/skybox/px.png',
-  '/skybox/nx.png',
-  '/skybox/py.png',
-  '/skybox/ny.png',
-  '/skybox/pz.png',
-  '/skybox/nz.png',
+  './skybox/px.png',
+  './skybox/nx.png',
+  './skybox/py.png',
+  './skybox/ny.png',
+  './skybox/pz.png',
+  './skybox/nz.png',
 ]);
 
 // Textures
 const textureLoader = new THREE.TextureLoader();
 
-const woodTexture = textureLoader.load('/textures/wood_floor.png');
+const woodTexture = textureLoader.load('./textures/wood_floor.png');
 woodTexture.wrapS = THREE.RepeatWrapping;
 woodTexture.wrapT = THREE.RepeatWrapping;
 woodTexture.repeat.set(3, 2);
 
-const neonFloorTexture = textureLoader.load('/textures/neon_floor.png');
+const neonFloorTexture = textureLoader.load('./textures/neon_floor.png');
 neonFloorTexture.wrapS = THREE.RepeatWrapping;
 neonFloorTexture.wrapT = THREE.RepeatWrapping;
 neonFloorTexture.repeat.set(2, 2);
 
-const speakerFabricTexture = textureLoader.load('/textures/speaker_fabric.png');
+const speakerFabricTexture = textureLoader.load('./textures/speaker_fabric.png');
 speakerFabricTexture.wrapS = THREE.RepeatWrapping;
 speakerFabricTexture.wrapT = THREE.RepeatWrapping;
 speakerFabricTexture.repeat.set(2, 2);
@@ -504,13 +504,13 @@ function loadModel(path, name, x, y, z, targetSize, rotY = 0, animate = false) {
 }
 
 // Placed intentionally and consistently
-loadModel('/models/headphones.glb', 'headphones model on left desk', -1.85, 1.36, 0.22, 0.85, Math.PI / 7);
-loadModel('/models/microphone.glb', 'microphone model on stand', -2.85, 1.78, 0.95, 0.62, Math.PI / 2);
-const boombox = loadModel('/models/boombox.glb', 'boombox model on shelf', -2.1, 1.68, -3.02, 1.05, 0, true);
-loadModel('/models/record_player.glb', 'record player model on desk', 2.45, 1.43, -0.55, 0.95, -Math.PI / 10);
+loadModel('./models/headphones.glb', 'headphones model on left desk', -1.85, 1.36, 0.22, 0.85, Math.PI / 7);
+loadModel('./models/microphone.glb', 'microphone model on stand', -2.85, 1.78, 0.95, 0.62, Math.PI / 2);
+const boombox = loadModel('./models/boombox.glb', 'boombox model on shelf', -2.1, 1.68, -3.02, 1.05, 0, true);
+loadModel('./models/record_player.glb', 'record player model on desk', 2.45, 1.43, -0.55, 0.95, -Math.PI / 10);
 // Removed the two speaker.glb objects because they were floating in the air.
 // The built-in primary-shape studio speakers on the desk remain in the scene.
-loadModel('/models/mp3_player.glb', 'mp3 player model on desk', 1.4, 1.35, 0.2, 0.48, -Math.PI / 7);
+loadModel('./models/mp3_player.glb', 'mp3 player model on desk', 1.4, 1.35, 0.2, 0.48, -Math.PI / 7);
 
 let currentMode = 'studio';
 
